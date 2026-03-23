@@ -2,4 +2,4 @@ streamlit
 streamlit-webrtc
 opencv-python-headless
 numpy
-openvino-dev
+mediapipe
