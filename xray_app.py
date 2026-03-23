@@ -1,6 +1,10 @@
 import streamlit as st
-import numpy as np
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # 불필요한 TF 로그 방지
+
 import tensorflow as tf
+import numpy as np
 from tensorflow.keras.models import load_model, Model
 from PIL import Image
 import cv2
