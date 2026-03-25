@@ -11,7 +11,17 @@ import joblib  # 모델 파일을 불러오기 위한 라이브러리
 import numpy as np  # 수치 계산을 위한 라이브러리 (np라는 별칭 사용)
 
 # 한글 폰트 설정 (Windows의 경우 맑은 고딕)
-plt.rcParams["font.family"] = "Malgun Gothic"
+import platform
+
+# 운영체제별 폰트 설정
+if platform.system() == "Windows":
+    plt.rc("font", family="Malgun Gothic")
+elif platform.system() == "Darwin":  # Mac
+    plt.rc("font", family="AppleGothic")
+else:  # Linux (Colab 등)
+    plt.rc("font", family="NanumBarunGothic")
+
+# 마이너스 기호 깨짐 방지
 plt.rcParams["axes.unicode_minus"] = False
 
 # 1. 초기 설정 및 모델 로드 (캐싱)
@@ -103,6 +113,9 @@ if st.button("🔍 분석 시작"):
                 fig_bar, ax = plt.subplots()
                 colors = ["#e74c3c" if x < 0 else "#2ecc71" for x in df_imp["기여도"]]
                 ax.barh(df_imp["단어"], df_imp["기여도"], color=colors)
+                ax.set_yticklabels(
+                    df_imp["단어"], fontproperties="Malgun Gothic"
+                )  # 여기서 다시 지정
                 st.pyplot(fig_bar)
 
         else:
