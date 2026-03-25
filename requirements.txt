@@ -1,5 +1,10 @@
-tensorflow
 streamlit
-pillow
-opencv-python-headless
+pandas
 numpy
+matplotlib
+seaborn
+kiwipiepy
+plotly
+scikit-learn
+transformers
+torch
